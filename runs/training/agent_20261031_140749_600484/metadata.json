@@ -1,0 +1,137 @@
+{
+  "algorithm": "linear Expected SARSA",
+  "feature_schema": "sensor_grid_regions_v1",
+  "settings": {
+    "episodes": 60,
+    "alpha": 0.12,
+    "gamma": 0.95,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1
+  },
+  "training_seed": 42,
+  "test_seeds": [
+    100000,
+    100001,
+    100002,
+    100003
+  ],
+  "test_weather": [
+    "clear",
+    "rain",
+    "fog"
+  ],
+  "watch_seed": 100000,
+  "watch_weather": "fog",
+  "adaptive_actions": [
+    [
+      "LANE_LEFT",
+      "off"
+    ],
+    [
+      "IDLE",
+      "off"
+    ],
+    [
+      "LANE_RIGHT",
+      "off"
+    ],
+    [
+      "FASTER",
+      "off"
+    ],
+    [
+      "SLOWER",
+      "off"
+    ],
+    [
+      "LANE_LEFT",
+      "front"
+    ],
+    [
+      "IDLE",
+      "front"
+    ],
+    [
+      "LANE_RIGHT",
+      "front"
+    ],
+    [
+      "FASTER",
+      "front"
+    ],
+    [
+      "SLOWER",
+      "front"
+    ],
+    [
+      "LANE_LEFT",
+      "radar_rgb"
+    ],
+    [
+      "IDLE",
+      "radar_rgb"
+    ],
+    [
+      "LANE_RIGHT",
+      "radar_rgb"
+    ],
+    [
+      "FASTER",
+      "radar_rgb"
+    ],
+    [
+      "SLOWER",
+      "radar_rgb"
+    ],
+    [
+      "LANE_LEFT",
+      "all_on"
+    ],
+    [
+      "IDLE",
+      "all_on"
+    ],
+    [
+      "LANE_RIGHT",
+      "all_on"
+    ],
+    [
+      "FASTER",
+      "all_on"
+    ],
+    [
+      "SLOWER",
+      "all_on"
+    ]
+  ],
+  "always_on_actions": [
+    [
+      "LANE_LEFT",
+      "all_on"
+    ],
+    [
+      "IDLE",
+      "all_on"
+    ],
+    [
+      "LANE_RIGHT",
+      "all_on"
+    ],
+    [
+      "FASTER",
+      "all_on"
+    ],
+    [
+      "SLOWER",
+      "all_on"
+    ]
+  ],
+  "package_versions": {
+    "highway-env": "1.12.1",
+    "gymnasium": "1.4.0",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:30:20) [Clang 20.1.8 ]"
+}

@@ -1,0 +1,54 @@
+{
+  "dqn_settings": {
+    "episodes": 1000,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1,
+    "hidden_size": 64,
+    "batch_size": 32,
+    "replay_capacity": 10000,
+    "learning_starts": 64,
+    "target_update_steps": 100,
+    "planning_steps": 2,
+    "model_learning_starts": 200
+  },
+  "sarsa_settings": {
+    "episodes": 1000,
+    "alpha": 0.12,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1
+  },
+  "training_seed": 42,
+  "test_seeds": [
+    100000,
+    100001,
+    100002,
+    100003,
+    100004,
+    100005,
+    100006,
+    100007,
+    100008,
+    100009,
+    100010,
+    100011,
+    100012,
+    100013,
+    100014,
+    100015,
+    100016,
+    100017,
+    100018,
+    100019
+  ],
+  "test_weather": [
+    "clear",
+    "rain",
+    "fog"
+  ],
+  "status": "complete",
+  "torch_threads": 1,
+  "execution": "three independent CPU processes, one PyTorch thread per process"
+}

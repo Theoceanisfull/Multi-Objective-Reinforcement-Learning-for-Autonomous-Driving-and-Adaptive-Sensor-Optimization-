@@ -1,0 +1,46 @@
+Results folder: runs/comparisons/dqn_long_training_20261112_170403_004536/evaluation_120s_2250m_20261112_193414_051178
+Expected SARSA: clear, 5/20 seeds
+Expected SARSA: clear, 10/20 seeds
+Dyna-DQN: clear, 5/20 seeds
+Expected SARSA: clear, 15/20 seeds
+Dyna-DQN: clear, 10/20 seeds
+Expected SARSA: clear, 20/20 seeds
+Expected SARSA: rain, 5/20 seeds
+Dyna-DQN: clear, 15/20 seeds
+DQN: clear, 5/20 seeds
+Expected SARSA: rain, 10/20 seeds
+Expected SARSA: rain, 15/20 seeds
+Dyna-DQN: clear, 20/20 seeds
+Expected SARSA: rain, 20/20 seeds
+Expected SARSA: fog, 5/20 seeds
+Expected SARSA: fog, 10/20 seeds
+Dyna-DQN: rain, 5/20 seeds
+DQN: clear, 10/20 seeds
+Expected SARSA: fog, 15/20 seeds
+Expected SARSA: fog, 20/20 seeds
+Finished frozen-policy evaluation: Expected SARSA
+Dyna-DQN: rain, 10/20 seeds
+DQN: clear, 15/20 seeds
+Dyna-DQN: rain, 15/20 seeds
+DQN: clear, 20/20 seeds
+Dyna-DQN: rain, 20/20 seeds
+DQN: rain, 5/20 seeds
+Dyna-DQN: fog, 5/20 seeds
+DQN: rain, 10/20 seeds
+Dyna-DQN: fog, 10/20 seeds
+Dyna-DQN: fog, 15/20 seeds
+DQN: rain, 15/20 seeds
+Dyna-DQN: fog, 20/20 seeds
+Finished frozen-policy evaluation: Dyna-DQN
+DQN: rain, 20/20 seeds
+DQN: fog, 5/20 seeds
+DQN: fog, 10/20 seeds
+DQN: fog, 15/20 seeds
+DQN: fog, 20/20 seeds
+Finished frozen-policy evaluation: DQN
+                episodes  completions  crashes  completion_fraction  crash_fraction  successful_finish_time_s  mean_power_w  mean_energy_j  mean_distance_m  mean_return  sensors_off_fraction
+policy                                                                                                                                                                                        
+Expected SARSA        60           11       49             0.183333        0.816667                108.090909     18.155918       248.3125       600.094737    -8.128440              0.634963
+DQN                   60           57        3             0.950000        0.050000                112.587719     71.955720      7725.0525      2153.114925    22.777875              0.075081
+Dyna-DQN              60           28       32             0.466667        0.533333                111.892857     74.873751      5144.7275      1463.469796     4.274979              0.095866
+Saved report: runs/comparisons/dqn_long_training_20261112_170403_004536/evaluation_120s_2250m_20261112_193414_051178/study_report.md

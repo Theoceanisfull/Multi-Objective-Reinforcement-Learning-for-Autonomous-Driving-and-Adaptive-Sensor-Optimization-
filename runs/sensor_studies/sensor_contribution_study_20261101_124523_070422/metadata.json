@@ -1,0 +1,79 @@
+{
+  "study_id": "sensor_contribution_sensitivity_v1",
+  "base_run": "runs/training/time_completion_20261101_111935_114914",
+  "seed": 42,
+  "trials": 300,
+  "validation_seeds": [
+    100004,
+    100005,
+    100006
+  ],
+  "weather": [
+    "clear",
+    "fog"
+  ],
+  "conditions": [
+    "all_on",
+    "off",
+    "rgb",
+    "event",
+    "radar",
+    "lidar",
+    "without_rgb",
+    "without_event",
+    "without_radar",
+    "without_lidar"
+  ],
+  "range_profiles": {
+    "original_rgb100_event60": {
+      "rgb": 100,
+      "event": 60
+    },
+    "equal60": {
+      "rgb": 60,
+      "event": 60
+    },
+    "equal100": {
+      "rgb": 100,
+      "event": 100
+    },
+    "swapped_rgb60_event100": {
+      "rgb": 60,
+      "event": 100
+    }
+  },
+  "diagnostic_overrides": {
+    "capture_trials_false_positive_rate_hz": 0
+  },
+  "training": "none; frozen always-on Expected SARSA driver",
+  "research_notes": {
+    "empirical_calibration": "pending; no external measurements fitted",
+    "measurement_conclusions": "Review information_results and range_results",
+    "policy_conclusions": "Review ablation_summary and sequence_comparison",
+    "range_sensitivity_conclusions": "Review profile_summary",
+    "next_evidence": "Hardware-specific optics/resolution and detection curves under documented conditions"
+  },
+  "sources_sha256": {
+    "runs/training/time_completion_20261101_111935_114914/always_on_agent.npz": "c3b1703200667f54d544d19dc7dc3947e5ca291b810e6b6979e1a049384beac8",
+    "runs/training/time_completion_20261101_111935_114914/config.json": "1d06b8c347bdc372ee57b3f2de4dabbcd917b8547a9933741ef38d67a30383ce",
+    "experiments/sensor_study_helpers.py": "46aedcd7891cdf6957e65ade9a425ebfde1b7d877d4c8791321d55a9dbea94a6",
+    "environments/sensor_highway/sensors.py": "10569c8dcef7d396913c613c94c25f5ec93e13da37dadbc66db2417acbc8834f",
+    "environments/sensor_highway/weather.py": "1089576fa8420224956bf06802adf60cf97d339a2dbc7a09f28997ff7e1723e9"
+  },
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "gymnasium": "1.4.0",
+    "highway-env": "1.12.1"
+  },
+  "recorded_findings": {
+    "all_on_completions": "6/6",
+    "all_off_completions": "4/6",
+    "all_off_crashes": "2/6",
+    "single_or_removed_modality_driving_sequences": "identical to matched all-on sequences for all trials",
+    "range_profiles": "all four profiles completed 6/6; mean successful time 15 s",
+    "interpretation": "No sensor superiority established; investigate weak policy sensitivity and sensor-status dependence",
+    "empirical_calibration": "pending"
+  }
+}

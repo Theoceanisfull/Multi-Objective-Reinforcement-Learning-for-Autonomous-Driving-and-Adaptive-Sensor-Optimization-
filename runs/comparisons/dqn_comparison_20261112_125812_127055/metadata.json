@@ -1,0 +1,122 @@
+{
+  "dqn_settings": {
+    "episodes": 60,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1,
+    "hidden_size": 64,
+    "batch_size": 32,
+    "replay_capacity": 10000,
+    "learning_starts": 64,
+    "target_update_steps": 100,
+    "planning_steps": 2,
+    "model_learning_starts": 200
+  },
+  "sarsa_settings": {
+    "episodes": 60,
+    "alpha": 0.12,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1
+  },
+  "training_seed": 42,
+  "test_seeds": [
+    100000,
+    100001,
+    100002,
+    100003
+  ],
+  "test_weather": [
+    "clear",
+    "rain",
+    "fog"
+  ],
+  "feature_schema": "sensor_grid_regions_route_v2",
+  "actions": [
+    [
+      "LANE_LEFT",
+      "off"
+    ],
+    [
+      "IDLE",
+      "off"
+    ],
+    [
+      "LANE_RIGHT",
+      "off"
+    ],
+    [
+      "FASTER",
+      "off"
+    ],
+    [
+      "SLOWER",
+      "off"
+    ],
+    [
+      "LANE_LEFT",
+      "front"
+    ],
+    [
+      "IDLE",
+      "front"
+    ],
+    [
+      "LANE_RIGHT",
+      "front"
+    ],
+    [
+      "FASTER",
+      "front"
+    ],
+    [
+      "SLOWER",
+      "front"
+    ],
+    [
+      "LANE_LEFT",
+      "radar_rgb"
+    ],
+    [
+      "IDLE",
+      "radar_rgb"
+    ],
+    [
+      "LANE_RIGHT",
+      "radar_rgb"
+    ],
+    [
+      "FASTER",
+      "radar_rgb"
+    ],
+    [
+      "SLOWER",
+      "radar_rgb"
+    ],
+    [
+      "LANE_LEFT",
+      "all_on"
+    ],
+    [
+      "IDLE",
+      "all_on"
+    ],
+    [
+      "LANE_RIGHT",
+      "all_on"
+    ],
+    [
+      "FASTER",
+      "all_on"
+    ],
+    [
+      "SLOWER",
+      "all_on"
+    ]
+  ],
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.13.15 | packaged by conda-forge | (main, Aug 10 2026, 13:01:04) [Clang 19.1.7 ]",
+  "checkpoint_purpose": "evaluation only"
+}

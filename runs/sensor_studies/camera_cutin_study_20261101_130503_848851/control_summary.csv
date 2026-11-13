@@ -1,0 +1,13 @@
+profile,gap_m,kind,trials,false_alert_fraction,mean_target_updates
+project_defaults,20,rgb,30,0.43333333333333335,107.0
+project_defaults,20,event,30,0.0,0.0
+project_defaults,40,rgb,30,0.26666666666666666,93.83333333333333
+project_defaults,40,event,30,0.0,0.0
+matched_coverage_native_timing,20,rgb,30,0.43333333333333335,107.0
+matched_coverage_native_timing,20,event,30,0.0,0.0
+matched_coverage_native_timing,40,rgb,30,0.26666666666666666,93.83333333333333
+matched_coverage_native_timing,40,event,30,0.0,0.0
+matched_coverage_equal_timing,20,rgb,30,0.43333333333333335,107.0
+matched_coverage_equal_timing,20,event,30,0.0,0.0
+matched_coverage_equal_timing,40,rgb,30,0.26666666666666666,93.83333333333333
+matched_coverage_equal_timing,40,event,30,0.0,0.0

@@ -1,0 +1,4 @@
+scenario,implementation_status,empirical_status,interpretation
+approach,range cutoff / near detection checks passed,pending,Model detection/error curves recorded; not hardware validated
+fog,severity curves recorded,pending,Behavior follows assumed fog coefficients
+shutdown,cancellation / aging / energy checks passed,pending,Current pipeline rules work; hardware timing remains unverified

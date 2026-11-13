@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "source_run": "runs/comparisons/dqn_long_training_20261112_170403_004536",
+  "frozen_policies": true,
+  "original_task": {
+    "duration_s": 16,
+    "route_distance_m": 300
+  },
+  "duration_s": 120.0,
+  "route_distance_m": 2250.0,
+  "test_seeds": [
+    100000,
+    100001,
+    100002,
+    100003,
+    100004,
+    100005,
+    100006,
+    100007,
+    100008,
+    100009,
+    100010,
+    100011,
+    100012,
+    100013,
+    100014,
+    100015,
+    100016,
+    100017,
+    100018,
+    100019
+  ],
+  "weather": [
+    "clear",
+    "rain",
+    "fog"
+  ],
+  "model_sha256": {
+    "sarsa.npz": "9cfdf9bed6263a1b075ea1799b761feb7217c97a709bdf7020ae4ade93c3928d",
+    "dqn.pt": "f85e4641483e792903083b53ed461cf3b12c1e8edb55cac5b9f9e686f0c8c340",
+    "dyna_dqn.pt": "49ccf8062282fe81715db1ad7e7e9bc0e366a26f37d59eb3b34ede1347c02755"
+  },
+  "model_hashes_unchanged": true
+}

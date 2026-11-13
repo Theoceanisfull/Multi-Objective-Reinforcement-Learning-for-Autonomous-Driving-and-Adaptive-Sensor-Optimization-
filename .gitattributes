@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.ipynb text
+*.csv -text whitespace=cr-at-eol
+*.json text
+*.pt binary
+*.npz binary
+*.png binary
+*.gif binary
+*.pdf binary
+*.docx binary

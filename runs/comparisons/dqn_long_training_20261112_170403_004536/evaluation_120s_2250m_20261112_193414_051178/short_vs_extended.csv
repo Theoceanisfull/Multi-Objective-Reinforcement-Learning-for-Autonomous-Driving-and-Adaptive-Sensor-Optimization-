@@ -1,0 +1,4 @@
+policy,short_finishes,short_trials,long_finishes,long_trials
+DQN,59,60,57,60
+Dyna-DQN,58,60,28,60
+Expected SARSA,51,60,11,60

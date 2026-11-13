@@ -1,0 +1,13 @@
+{
+  "reviewer": "TBD",
+  "hardware_selection": "pending",
+  "empirical_acceptance_criteria": "pending",
+  "external_validation": "pending",
+  "decision": "Baseline implementation checks only; no realism claim",
+  "next_actions": [
+    "Select representative hardware and primary sources",
+    "Record conditions and uncertainty for each parameter",
+    "Define empirical criteria and independent validation scenarios",
+    "Calibrate supported parameters and rerun this study"
+  ]
+}

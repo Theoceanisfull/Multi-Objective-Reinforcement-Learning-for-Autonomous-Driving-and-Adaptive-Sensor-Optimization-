@@ -1,0 +1,13 @@
+{
+  "policy": "sarsa",
+  "settings": {
+    "episodes": 1000,
+    "alpha": 0.12,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1
+  },
+  "training_seed": 42,
+  "episodes": 1000,
+  "real_steps": 19580
+}

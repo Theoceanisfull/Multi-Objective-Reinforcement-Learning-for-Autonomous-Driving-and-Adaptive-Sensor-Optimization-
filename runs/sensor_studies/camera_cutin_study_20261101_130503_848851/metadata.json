@@ -1,0 +1,74 @@
+{
+  "study_id": "camera_cutin_timing_v1",
+  "settings": {
+    "onset_s": 1.0,
+    "duration_s": 6.0,
+    "physics_hz": 100,
+    "lane_offset_m": 4.0,
+    "tracking_window_s": 0.4,
+    "minimum_samples": 5,
+    "minimum_span_s": 0.2,
+    "angular_alert_threshold_deg_s": 3.0,
+    "decision_period_s": 0.5,
+    "alert_sigma_margin": 2.0
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "gaps_m": [
+    20,
+    40
+  ],
+  "lateral_speeds_m_s": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "trace_seed": 0,
+  "diagnostic_overrides": {
+    "false_positive_rate_hz": 0
+  },
+  "status": "synthetic diagnostic; empirically uncalibrated",
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "source_sha256": {
+    "experiments/cutin_study_helpers.py": "4f35ba6788664bc5fa6092f31199a7d14188a86e8eb2fd247ad2d65d45dabc6c",
+    "environments/sensor_highway/sensors.py": "10569c8dcef7d396913c613c94c25f5ec93e13da37dadbc66db2417acbc8834f",
+    "environments/sensor_highway/weather.py": "1089576fa8420224956bf06802adf60cf97d339a2dbc7a09f28997ff7e1723e9",
+    "environments/sensor_highway/config.py": "a743b400409469d95e319a7f755d8ef56b498069c7695f54ccc3d5e80c26b44a"
+  },
+  "recorded_interpretation": "Native event timing gives fresher detections in rapid cut-ins; equal timing removes this advantage in the 20 m case. Simple motion tracker has material RGB false-alert rates, and event zero-control detections are imposed by the model. No real-world safety advantage established."
+}

@@ -1,0 +1,14 @@
+{
+  "source_run": "runs/comparisons/dqn_long_training_20261112_170403_004536",
+  "seed": 100000,
+  "weather": "clear",
+  "capture_rate_hz": 2,
+  "frozen_policies": true,
+  "duration_s": 120.0,
+  "route_distance_m": 2250.0,
+  "policies": [
+    "sarsa",
+    "dqn",
+    "dyna_dqn"
+  ]
+}

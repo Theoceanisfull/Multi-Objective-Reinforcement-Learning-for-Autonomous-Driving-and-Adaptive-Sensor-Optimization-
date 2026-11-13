@@ -1,0 +1,25 @@
+# Python and local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Notebook/editor/OS state
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+~$*
+*.tmp
+
+# Local credentials and settings
+.env
+.env.*
+!.env.example
+
+# Optional scratch work; recorded runs under runs/ are intentionally included.
+scratch/

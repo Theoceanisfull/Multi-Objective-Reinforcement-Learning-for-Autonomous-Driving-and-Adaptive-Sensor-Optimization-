@@ -1,0 +1,39 @@
+{
+  "study_id": "sensor_realism_validation_v1",
+  "status": "uncalibrated baseline",
+  "seed": 42,
+  "trials_per_snapshot": 300,
+  "distances_m": [
+    10,
+    20,
+    40,
+    60,
+    100,
+    160
+  ],
+  "fog_severities": [
+    0.0,
+    0.35,
+    0.7,
+    1.0
+  ],
+  "shutdown_time_s": 0.25,
+  "diagnostic_overrides": {
+    "false_positive_rate_hz": 0,
+    "target_relative_speed_m_s": -10
+  },
+  "python": "3.14.6",
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "highway-env": "1.12.1",
+    "gymnasium": "1.4.0"
+  },
+  "source_sha256": {
+    "environments/sensor_highway/config.py": "a743b400409469d95e319a7f755d8ef56b498069c7695f54ccc3d5e80c26b44a",
+    "environments/sensor_highway/sensors.py": "10569c8dcef7d396913c613c94c25f5ec93e13da37dadbc66db2417acbc8834f",
+    "environments/sensor_highway/weather.py": "1089576fa8420224956bf06802adf60cf97d339a2dbc7a09f28997ff7e1723e9",
+    "environments/sensor_highway/grid.py": "8df6cec84a330aef79752d0b5b9d82293c1e2aee520c972b6860661cffa3cfbb"
+  }
+}

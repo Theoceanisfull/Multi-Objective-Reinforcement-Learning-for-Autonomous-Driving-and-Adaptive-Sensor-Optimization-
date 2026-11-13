@@ -1,0 +1,11 @@
+condition,active_sensors,nominal_power_w
+all_on,18,123.0
+off,0,1.8
+rgb,8,65.0
+event,8,25.0
+radar,1,11.7
+lidar,1,26.7
+without_rgb,10,59.8
+without_event,10,99.8
+without_radar,17,113.1
+without_lidar,17,98.1
