@@ -24,7 +24,6 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements-dqn.txt
-            basic/requirements.txt
       - name: Install dependencies
         run: python -m pip install -r requirements-dqn.txt
       - name: Environment tests

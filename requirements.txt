@@ -1,3 +1,10 @@
-# Shared pinned dependencies for the tutorial, environments, and experiments.
-# Python 3.14 is the version used for the recorded runs.
--r basic/requirements.txt
+# Python 3.14 dependencies for the simulator and notebooks.
+highway-env==1.12.1
+gymnasium==1.4.0
+numpy==2.5.4
+matplotlib==3.11.2
+pandas==3.0.6
+jupyterlab==4.6.4
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0

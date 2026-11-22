@@ -2,7 +2,7 @@
 
 This is an object-level sensor-management environment built on the existing
 HighwayEnv backbone. It models imperfect perception, not physical camera images,
-point clouds, or radar waveforms. The original tutorial is unchanged.
+point clouds, or radar waveforms.
 
 ## Run it
 
@@ -22,8 +22,8 @@ replaced. Use separate output folders to preserve runs. `--sensing` supports
 useful for inspecting perception and energy. For learned driving and sensing
 policies, see the [experiment guide](../experiments/README.md).
 
-Dependencies are the same as `basic/requirements.txt`. The adapter was checked
-against HighwayEnv **1.12.1** and Gymnasium **1.4.0**. No new packages are required.
+The [requirements file](../requirements.txt) pins HighwayEnv **1.12.1** and
+Gymnasium **1.4.0**.
 The physics callback copies the short HighwayEnv `_simulate` loop: check it when
 upgrading HighwayEnv, and run the stock-motion parity test.
 

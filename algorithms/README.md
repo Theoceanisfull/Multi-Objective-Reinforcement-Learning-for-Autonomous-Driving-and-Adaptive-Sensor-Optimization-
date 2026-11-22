@@ -1,8 +1,7 @@
 # Learning algorithms
 
-Start with [the DQN notebook](../experiments/sensor_dqn_experiment.ipynb) for a
-step-by-step comparison of Expected SARSA, DQN, and Dyna-DQN. The notebook uses
-the same 300 m / 16 s task as the short-route SARSA experiment.
+The [short-route notebook](../experiments/sensor_dqn_long_training.ipynb) compares
+Expected SARSA, DQN, and Dyna-DQN on the 300 m / 16 s task.
 
 ## Files
 

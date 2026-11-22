@@ -28,7 +28,7 @@ The full install includes PyTorch and Jupyter. If you only want the environment 
 
 2. **Review the completed experiments.** Start Jupyter with `python -m jupyterlab`, open [Analyze recorded route experiments](experiments/analyze_route_results.ipynb), select the Python kernel from `.venv`, and use **Run All**. It reads bundled CSVs and exports plots to `runs/local/plots/` without training.
 
-3. **Train or reproduce a study.** Use the [experiment guide](experiments/README.md) to pick a notebook or command. Training notebooks can be expensive to run from scratch.
+3. **Train or reproduce a study.** Use the [experiment guide](experiments/README.md) to pick a notebook or command. Training notebooks display recorded results by default. Turn on `RUN_TRAINING` to retrain.
 
 ## Main experiments
 
@@ -48,7 +48,7 @@ The last study trains on 300 m routes and evaluates frozen policies on 2,250 m r
 python -m experiments.short_route_curriculum --output runs/local/short_route_curriculum --workers 3
 ```
 
-Use a new output directory on each run. The default protocol trains three algorithms in two arms across three seeds, then evaluates each saved policy. The [experiment guide](experiments/README.md) also covers the spiking models, driving-only evaluations, and 9 km overtaking studies.
+Use a new output directory on each run. The default protocol trains three algorithms in two arms across three seeds, then evaluates each saved policy.
 
 ## Key results
 
@@ -75,7 +75,6 @@ The control loop uses 112 features in fixed-route tasks and selects one of 20 jo
 | [`experiments/`](experiments/) | Notebooks, training, evaluation, and replay programs |
 | [`runs/`](runs/) | Recorded results, configurations, portable model weights, and selected replays |
 | [`data/`](data/) | Run catalog and file checksums |
-| [`basic/`](basic/) | Original HighwayEnv and tabular Q-learning tutorial |
 | `runs/local/` | Generated results and local training state, ignored by Git |
 
 ```bash
