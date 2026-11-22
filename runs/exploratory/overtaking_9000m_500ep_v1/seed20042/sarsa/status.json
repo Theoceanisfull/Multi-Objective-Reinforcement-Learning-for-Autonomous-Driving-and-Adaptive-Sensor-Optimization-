@@ -1,0 +1,6 @@
+{
+  "phase": "stopped",
+  "policy": "sarsa",
+  "seed": 20042,
+  "updated_at": "2026-11-18T16:36:26.746939-05:00"
+}

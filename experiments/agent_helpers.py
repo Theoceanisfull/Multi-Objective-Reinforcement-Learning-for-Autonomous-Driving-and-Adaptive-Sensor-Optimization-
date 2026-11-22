@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from environments.sensor_highway import SensorHighwayEnv
 from algorithms.sensor_agent import ObservationEncoder, LinearExpectedSarsa, SENSING_MODES, DRIVE_NAMES
-from experiments.notebook_helpers import Rollout
+from experiments.notebook_helpers import Rollout, sensor_mask
 
 
 def train_agent(config, settings, seed=42, modes=SENSING_MODES):
@@ -52,8 +52,15 @@ def train_agent(config, settings, seed=42, modes=SENSING_MODES):
     return agent, pd.DataFrame(records)
 
 
-def run_agent(config, agent=None, seed=100000, capture=False, baseline=None):
-    """baseline: None for learned agent, 'idle_all_on', or 'random_all_on'."""
+def run_agent(config, agent=None, seed=100000, capture=False, baseline=None, *, forced_sensing=None):
+    """Evaluate a frozen policy or a fixed baseline.
+
+    A forced sensing mode replaces the policy's sensor request only. The policy
+    still selects a driving action from its current observation at each step.
+    """
+    if forced_sensing is not None and (agent is None or baseline is not None):
+        raise ValueError("Forced sensing requires a learned policy without a baseline")
+    forced_mask = sensor_mask(config, forced_sensing) if forced_sensing is not None else None
     encoder = ObservationEncoder(config)
     if agent is not None and agent.feature_schema != encoder.feature_schema:
         raise ValueError("Agent feature schema does not match the environment task configuration")
@@ -75,6 +82,9 @@ def run_agent(config, agent=None, seed=100000, capture=False, baseline=None):
                 index = agent.select(encoder(obs), 0., rng)
                 action = agent.decode(index, env)
                 drive_name, mode = agent.actions[index]
+                if forced_mask is not None:
+                    action["sensors"] = forced_mask
+                    mode = forced_sensing
             else:
                 if baseline not in {"idle_all_on", "random_all_on"}:
                     raise ValueError("Unknown baseline")
@@ -99,6 +109,8 @@ def run_agent(config, agent=None, seed=100000, capture=False, baseline=None):
                             "route_completed": info["route_completed"],
                             "terminated": bool(terminated), "truncated": bool(truncated),
                             **info["reward_components"]})
+            if "slow_leaders_passed" in info:
+                records[-1].update({k: info[k] for k in ("slow_leaders_passed", "slow_leaders_total")})
             if capture:
                 snapshots.append(obs)
                 frames.append(env.render())
@@ -114,6 +126,8 @@ def run_agent(config, agent=None, seed=100000, capture=False, baseline=None):
                    "elapsed_s": info["time_s"], "mean_speed_m_s": distance / info["time_s"], "steps": steps}
         metrics.update({f"mode_fraction_{mode}": mode_counts.get(mode, 0) / steps for mode in SENSING_MODES})
         metrics.update({f"drive_fraction_{drive}": drive_counts.get(drive, 0) / steps for drive in DRIVE_NAMES})
+        if "slow_leaders_passed" in info:
+            metrics.update({k: info[k] for k in ("slow_leaders_passed", "slow_leaders_total")})
         rollout = Rollout(pd.DataFrame(records), snapshots, frames, env.sensor_names, config.grid.radius_m)
     return metrics, rollout
 

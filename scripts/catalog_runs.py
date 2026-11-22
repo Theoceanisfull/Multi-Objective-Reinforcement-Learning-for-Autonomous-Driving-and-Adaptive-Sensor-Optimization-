@@ -16,13 +16,14 @@ def write_csv(path, fields, rows):
 def main():
     entries, files = [], []
     for collection in sorted((ROOT / 'runs').iterdir()):
-        if not collection.is_dir():
+        if not collection.is_dir() or collection.name == 'local':
             continue
         for run in sorted(collection.iterdir()):
             if not run.is_dir():
                 continue
             candidates = [run] + [p for p in sorted(run.iterdir())
-                                  if p.is_dir() and p.name.startswith(('evaluation_', 'replays'))]
+                                  if p.is_dir() and any(p.iterdir())
+                                  and p.name.startswith(('evaluation_', 'replays'))]
             for item in candidates:
                 kind = ('checkpoint' if 'checkpoint' in item.name else 'replay' if item.name.startswith('replays')
                         else 'frozen_evaluation' if item.name.startswith('evaluation_') else collection.name)

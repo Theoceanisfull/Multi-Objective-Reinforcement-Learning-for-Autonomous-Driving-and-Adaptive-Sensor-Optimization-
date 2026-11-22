@@ -1,0 +1,146 @@
+{
+  "source_run": "/Users/zac/Desktop/Reinforcment_Learning/final_project/experiments/artifacts/driving_policy_v1/driving_500ep_20261121_103801_682209",
+  "source_checkpoints_sha256": {
+    "sarsa/agent.npz": "3cfe6fd0bb3d6557dd2087911a752bb1cfb1a080603cb8888c556fc2ca5bbd0b",
+    "dqn/agent.pt": "971acf676c25beecdcf5441ad706c86add7aa3e19859189ff527ac41095d0f72",
+    "dyna_dqn/agent.pt": "28349b6c486c5fe92af13e8492e16f5c4b911e67d1cd9fec7a520423dae6b905"
+  },
+  "training_settings": {
+    "episodes": 1000,
+    "gamma": 0.9,
+    "alpha": 0.1,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1,
+    "learning_rate": 0.0001,
+    "hidden_size": 64,
+    "batch_size": 32,
+    "replay_capacity": 10000,
+    "learning_starts": 128,
+    "target_update_steps": 100,
+    "planning_steps": 1,
+    "model_learning_starts": 1000,
+    "double_q": true,
+    "validation_interval": 50,
+    "min_validation_terminals": 5,
+    "feature_mae_limit": 0.05,
+    "reward_mae_limit": 0.1,
+    "terminal_mae_limit": 0.15,
+    "q_abort_limit": 20.0
+  },
+  "training_seed": 42,
+  "frozen": true,
+  "seed_start": 300000,
+  "policies": [
+    "sarsa",
+    "dqn",
+    "dyna_dqn",
+    "oracle",
+    "fixed_left_fast"
+  ],
+  "workers": 3,
+  "batches": [
+    {
+      "case": {
+        "name": "control_1000m",
+        "traffic": "control",
+        "route_m": 1000,
+        "deadline_s": 45
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "varied_lead_1000m",
+        "traffic": "varied_lead",
+        "route_m": 1000,
+        "deadline_s": 45
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "blocked_left_1000m",
+        "traffic": "blocked_left",
+        "route_m": 1000,
+        "deadline_s": 45
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "blocked_right_1000m",
+        "traffic": "blocked_right",
+        "route_m": 1000,
+        "deadline_s": 45
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "repeated_2250m",
+        "traffic": "repeated",
+        "route_m": 2250,
+        "deadline_s": 100
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "repeated_5000m",
+        "traffic": "repeated",
+        "route_m": 5000,
+        "deadline_s": 220
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "repeated_9000m",
+        "traffic": "repeated",
+        "route_m": 9000,
+        "deadline_s": 360
+      },
+      "weather": "clear",
+      "trips_per_policy": 20
+    },
+    {
+      "case": {
+        "name": "repeated_2250m",
+        "traffic": "repeated",
+        "route_m": 2250,
+        "deadline_s": 100
+      },
+      "weather": "rain",
+      "trips_per_policy": 10
+    },
+    {
+      "case": {
+        "name": "repeated_2250m",
+        "traffic": "repeated",
+        "route_m": 2250,
+        "deadline_s": 100
+      },
+      "weather": "fog",
+      "trips_per_policy": 10
+    }
+  ],
+  "notes": [
+    "Oracle uses traffic truth for feasibility only; learned policies receive sensor observations.",
+    "All sensors on. Route/deadline changes also change normalized task features.",
+    "Overtakes count distinct traffic encountered ahead within 150 m and subsequently passed by >10 m.",
+    "Road users hold lanes; this does not test cut-ins or lane-changing traffic."
+  ],
+  "source_sha256": {
+    "environments/sensor_highway/driving_evaluation.py": "9663f32713645e7203a83dbf1dbbd33308435b3cd36336a667ff1d661b7efced",
+    "experiments/evaluate_driving_generalization.py": "241a30f9a8aedada678c35a32ad3f5915fcec70f7de255b6b8a2613173dad7e6",
+    "environments/sensor_highway/driving.py": "4ceb79ee399a5b3a686f7c4ff5a9d0d06b8974ea7bac29245141eb58e8a24182",
+    "environments/sensor_highway/overtaking.py": "35ec0b0a63dbe890b8f4649e8bc0cf80a1b80099530d004ee33a99129fa3529f",
+    "algorithms/driving_agents.py": "52c3cc9c15eb10a3f3ea8d16bfa61848a2c35987426441c8724fd0615c9e03bc"
+  }
+}

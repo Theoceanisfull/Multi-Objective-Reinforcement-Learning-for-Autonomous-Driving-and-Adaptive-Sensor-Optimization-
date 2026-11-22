@@ -1,0 +1,9 @@
+{
+  "phase": "complete",
+  "policy": "dqn",
+  "seed": 10042,
+  "episode": 500,
+  "episodes": 500,
+  "test_trips": 60,
+  "updated_at": "2026-11-18T16:31:18.936457-05:00"
+}

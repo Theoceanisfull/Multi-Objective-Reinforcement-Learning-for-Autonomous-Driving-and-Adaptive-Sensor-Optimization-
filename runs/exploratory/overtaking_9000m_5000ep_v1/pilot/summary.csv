@@ -1,0 +1,7 @@
+policy,training_seeds,completion,completion_sd,crash,deadline_failure,overtakes,power_w,following_s,mean_return,successful_time_s
+Adaptive reservoir,1,0.0,,1.0,0.0,1.0,122.99999999999395,0.0,-192.90650627599513,
+DQN,1,0.0,,1.0,0.0,1.0,16.99610389610373,0.0,-192.9038477613655,
+Dyna-DQN,1,0.0,,1.0,0.0,7.5,37.94541887905403,0.0,-155.79943962284185,
+Expected SARSA,1,0.0,,0.0,1.0,0.0,6.687500000001055,0.0,-184.38703557928125,
+Prototype control (no STDP),1,0.0,,1.0,0.0,0.0,123.0000000000015,0.0,-197.24654126124972,
+STDP-pretrained prototypes,1,0.0,,1.0,0.0,0.0,123.00000000000125,0.0,-197.71637643890745,

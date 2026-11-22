@@ -70,7 +70,7 @@ def main():
     config.reward.route_distance_m = args.route_distance
     config.validate()
     stamp = datetime.now(ZoneInfo("America/New_York")).strftime("%Y%m%d_%H%M%S_%f")
-    output = (args.output or source / f"evaluation_{args.duration:g}s_{args.route_distance:g}m_{stamp}").resolve()
+    output = (args.output or Path("runs/local") / f"evaluation_{args.duration:g}s_{args.route_distance:g}m_{stamp}").resolve()
     output.mkdir(parents=True, exist_ok=False)
     config.save(output / "config.json")
     hashes = {filename: file_hash(source / filename) for _, _, filename in POLICIES}

@@ -1,127 +1,86 @@
 # MORL4AVSO
 
-Reinforcement learning for joint **driving and sensor activation** in a HighwayEnv-based simulator. The project compares Expected SARSA, DQN, and Dyna-DQN while measuring route completion, crashes, completion time, and sensing energy.
+Reinforcement learning for **joint driving and sensor activation** in HighwayEnv. Expected SARSA, DQN, and Dyna-DQN learn when to activate modeled sensors while trying to finish highway routes safely and on time. The project compares completion, crashes, and sensing energy under original traffic and controlled overtaking.
 
-The current implementation uses a **weighted scalar reward** combining several objectives. Explicit Pareto-based multi-objective learning is future work. Sensors are simplified object-level models with uncalibrated assumptions, rather than physical camera images or radar waveforms.
+![System overview showing joint driving and sensing and the short-route training to long-route validation experiment](docs/images/system_overview.png)
 
-## Start here
+## Quick start
 
-- [Algorithm comparison and analysis](docs/algorithm_comparison_report.md)
-- [Executed 1,000-episode notebook and training curves](experiments/sensor_dqn_long_training.ipynb)
-- [Saved runs index](runs/README.md) and [data catalog](data/README.md)
-- [Environment design and observation contract](environments/README.md)
-- [Organization and provenance](docs/organization.md)
-
-## Repository layout
-
-```text
-MORL4AVSO/
-├── algorithms/          # Expected SARSA, DQN, Dyna-DQN, shared feature encoder
-├── environments/        # Simulator, sensors, configuration, environment tests
-├── experiments/         # Executed notebooks, training/evaluation/replay helpers, tests
-├── basic/               # Original HighwayEnv and Q-learning learning tutorial
-├── runs/
-│   ├── comparisons/     # Short/long DQN comparisons, frozen-model evaluations, replays
-│   ├── training/        # Earlier SARSA route experiments and checkpoint
-│   ├── sensor_studies/  # Realism, contribution/range, and cut-in timing studies
-│   ├── environment/     # Fixed-policy environment diagnostics
-│   └── tutorial/        # Tabular Q-learning results
-├── data/                # Searchable run/data catalogs and migration checksums
-├── docs/                # Reports, proposal, milestone documents, project notes
-└── .github/workflows/   # Automated tests
-```
-
-Each saved run keeps its models, configuration, CSVs, figures, metadata, and replays together. Recorded run IDs and numerical results are preserved. Historical runs are included in this repository; caches, local environments, and temporary files are excluded.
-
-## Setup
-
-Run commands from the `MORL4AVSO` directory. The local environment used for the latest runs was Python 3.14; earlier metadata also records Python 3.13.
+From a fresh checkout on macOS or Linux (Windows users can run these commands in WSL), use Python 3.14:
 
 ```bash
+git clone https://github.com/Theoceanisfull/Multi-Objective-Reinforcement-Learning-for-Autonomous-Driving-and-Adaptive-Sensor-Optimization-.git MORL4AVSO
+cd MORL4AVSO
 python3.14 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-dqn.txt
-python -m jupyterlab
 ```
 
-`requirements-dqn.txt` includes PyTorch and the shared pinned dependencies. For the original SARSA-only workflow, install `requirements.txt` instead. Choose the new `.venv` interpreter in your editor; the old project's virtual environment is not bundled.
+The full install includes PyTorch and Jupyter. If you only want the environment and linear Expected SARSA, install `requirements.txt`.
 
-## Experiments
+1. **Try the simulator.** This short fixed-policy demo produces a road and occupancy-grid preview.
 
-| Notebook | Purpose |
+   ```bash
+   SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy MPLBACKEND=Agg python -m environments.demo --weather fog --sensing front --steps 10
+   ```
+
+   Open `runs/local/environment_demo/preview.png`.
+
+2. **Review the completed experiments.** Start Jupyter with `python -m jupyterlab`, open [Analyze recorded route experiments](experiments/analyze_route_results.ipynb), select the Python kernel from `.venv`, and use **Run All**. It reads bundled CSVs and exports plots to `runs/local/plots/` without training.
+
+3. **Train or reproduce a study.** Use the [experiment guide](experiments/README.md) to pick a notebook or command. Training notebooks can be expensive to run from scratch.
+
+## Main experiments
+
+| Task | Where to start |
 | --- | --- |
-| [Environment inspection](experiments/sensor_environment_initial_test.ipynb) | Inspect sensing, weather, delayed measurements, and maps |
-| [Expected SARSA](experiments/sensor_agent_experiment.ipynb) | Initial adaptive and always-on driving/sensing comparison |
-| [Time-to-completion](experiments/sensor_time_completion_experiment.ipynb) | SARSA on a 300 m route with a 16 s deadline |
-| [Earlier long-route SARSA](experiments/sensor_time_completion_120s_200episodes.ipynb) | 200 training episodes on 2,250 m / 120 s |
-| [DQN introduction](experiments/sensor_dqn_experiment.ipynb) | Simple explanations and a 60-episode three-agent comparison |
-| [Longer DQN training](experiments/sensor_dqn_long_training.ipynb) | 1,000 episodes per agent on 300 m / 16 s |
-| [Sensor realism](experiments/sensor_realism_validation_study.ipynb) | Baseline implementation checks and calibration register |
-| [Sensor contribution](experiments/sensor_contribution_sensitivity_study.ipynb) | Modality ablations and optical range sensitivity |
-| [Cut-in timing](experiments/camera_cutin_timing_study.ipynb) | Controlled RGB/event timing diagnostics |
+| Inspect sensing, weather, and measurement aging | [Environment notebook](experiments/sensor_environment_initial_test.ipynb) |
+| Compare the three agents on the 300 m / 16 s task | [Short-route training notebook](experiments/sensor_dqn_long_training.ipynb) |
+| Train Expected SARSA on the 2,250 m / 120 s task | [Long-route SARSA notebook](experiments/sensor_time_completion_120s_1000episodes.ipynb) |
+| Train DQN and Dyna-DQN on the same long route | [Long-route DQN notebook](experiments/sensor_dqn_time_completion_120s_2250m_1000episodes.ipynb) |
+| Compare original traffic and controlled slow leaders | [Overtaking notebook](experiments/sensor_overtaking_120s_2250m_1000episodes.ipynb) |
+| Evaluate transfer and diagnose all-standby failures | [Three-stage study program](experiments/compare_route_stages.py) |
+| Compare varied short-route training and crash restarts against original training | [Curriculum study program](experiments/short_route_curriculum.py) |
 
-Executed notebook outputs are retained. Opening a notebook does not retrain models; running all training cells can start an expensive fresh run. For loading a completed parallel-training run in the long-training notebook, launch Jupyter with:
+The last study trains on 300 m routes and evaluates frozen policies on 2,250 m routes. Both training groups use 22,000 simulator decisions per policy and training seed. A crash ends the episode. In the varied-traffic arm, the next episode starts in a different feasible passing scenario.
 
 ```bash
-FINAL_PROJECT_DQN_RUN_DIR=runs/comparisons/dqn_long_training_20261112_170403_004536 python -m jupyterlab
+python -m experiments.short_route_curriculum --output runs/local/short_route_curriculum --workers 3
 ```
 
-## Recorded results
+Use a new output directory on each run. The default protocol trains three algorithms in two arms across three seeds, then evaluates each saved policy. The [experiment guide](experiments/README.md) also covers the spiking models, driving-only evaluations, and 9 km overtaking studies.
 
-All three learned policies below used one training seed and 1,000 episodes on **300 m / 16 s**. Evaluation used 20 held-out traffic seeds in each of clear, rain, and fog: 60 trials per policy, with no exploration or learning.
+## Key results
 
-| Agent | Successful finishes | Crashes | Successful finish time | Mean sensing power |
-| --- | --- | --- | --- | --- |
-| Expected SARSA | 51/60 | 9/60 | 14.31 s | 12.07 W |
-| DQN | 59/60 | 1/60 | 15.00 s | 71.42 W |
-| Dyna-DQN | 58/60 | 2/60 | 14.76 s | 75.43 W |
+On the original 2,250 m route, adaptive Expected SARSA and its learned all-on baseline both finished **12/12** matched clear, rain, and fog trials without crashing. Mean modeled sensing power was **89.19 W** with adaptive sensing and **123.00 W** with all sensors on, a **27.5% reduction**. [Baseline results](runs/training/time_completion_120s_1000ep_20261121_204241_241658/summary.csv)
 
-[Training curves PNG](runs/comparisons/dqn_long_training_20261112_170403_004536/training_curves.png)
+In a separate test, the short-route curriculum improved transfer to unseen overtaking layouts. The arrows show the number of finishes under **original training → varied traffic with crash restarts**, out of 54 trials per condition across three training seeds.
 
-![Evaluation of policies trained for 1,000 episodes](runs/comparisons/dqn_long_training_20261112_170403_004536/evaluation_summary.png)
+| Policy | Original long-route traffic | Unseen long-route overtaking |
+| --- | ---: | ---: |
+| Expected SARSA | 29 → 29 | 0 → 27 |
+| DQN | 14 → 2 | 4 → 26 |
+| Dyna-DQN | 16 → 11 | 12 → 30 |
 
-SARSA used much less sensing power; DQN completed more trips. Successful-trip times exclude failures and compare different subsets. Energy figures cover simulated sensing, not training electricity. One training seed and reused traffic seeds across weather limit generalization claims.
+[Curriculum results](runs/comparisons/short_route_varied_restart_20261122_125122_162138/summary.csv) · [Per-seed results](runs/comparisons/short_route_varied_restart_20261122_125122_162138/summary_by_training_seed.csv) · [Watch Dyna-DQN pass three slow vehicles on an unseen layout](runs/comparisons/short_route_varied_restart_20261122_125122_162138/replays/dyna_dqn_unseen_wide_gaps_clear_seed300000_realtime.gif)
 
-The **same frozen policies** were later evaluated on **2,250 m / 120 s**, without retraining:
+The control loop uses 112 features in fixed-route tasks and selects one of 20 joint actions every 0.5 seconds. A weighted reward combines driving, timing, energy, and uncertainty. The sensors are uncalibrated object-level models, and the power figures describe modeled sensing during simulation.
 
-| Agent | Successful finishes | Crashes |
-| --- | --- | --- |
-| Expected SARSA | 11/60 | 49/60 |
-| DQN | 57/60 | 3/60 |
-| Dyna-DQN | 28/60 | 32/60 |
+## Repository layout and tests
 
-See the [short-task report](runs/comparisons/dqn_long_training_20261112_170403_004536/study_report.md) and [120-second transfer report](runs/comparisons/dqn_long_training_20261112_170403_004536/evaluation_120s_2250m_20261112_193414_051178/study_report.md). These 120-second results are distinct from the earlier SARSA experiment that actually trained on the longer route.
-
-## Replays
-
-- [300 m matched viewer](runs/comparisons/dqn_long_training_20261112_170403_004536/replays_clear_seed100000_20261112_191411_099079/replay.html)
-- [2,250 m matched viewer](runs/comparisons/dqn_long_training_20261112_170403_004536/replays_120s_2250m_clear_seed100000_20261112_193307_152187/replay.html)
-
-Download/clone the repository and open `replay.html` in a browser for playback controls. GitHub's file view displays HTML source. Individual GIFs and action CSVs sit beside each viewer. Frames are captured at 2 Hz; episodes end on crash, off-road, completion, or deadline.
-
-Generate new replays or repeat the frozen-model evaluation from the repository root:
+| Path | Contents |
+| --- | --- |
+| [`algorithms/`](algorithms/) | Linear, neural, and spiking policies |
+| [`environments/`](environments/) | Simulator, sensing, weather, and observation model |
+| [`experiments/`](experiments/) | Notebooks, training, evaluation, and replay programs |
+| [`runs/`](runs/) | Recorded results, configurations, portable model weights, and selected replays |
+| [`data/`](data/) | Run catalog and file checksums |
+| [`basic/`](basic/) | Original HighwayEnv and tabular Q-learning tutorial |
+| `runs/local/` | Generated results and local training state, ignored by Git |
 
 ```bash
-python -m experiments.replay_agents --seed 100000 --weather clear
-python -m experiments.replay_agents --duration 120 --route-distance 2250 --seed 100000 --weather clear
-python -m experiments.evaluate_saved_agents --duration 120 --route-distance 2250
+SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy MPLBACKEND=Agg python -m unittest discover -s environments/tests -v
+SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy MPLBACKEND=Agg python -m unittest discover -s experiments/tests -v
 ```
 
-The default model source is the saved 1,000-episode comparison in `runs/comparisons/`. New exports create separate timestamped folders.
-
-## Algorithms and reward
-
-All agents select among five driving actions and four sensing modes using epsilon-greedy exploration. They share observation-derived features and the same environment reward. SARSA uses linear values; DQN adds a neural network, replay, and target network; Dyna-DQN adds learned one-step outcomes for extra Q updates during training. At evaluation, Dyna-DQN acts through its Q network without model-based planning.
-
-The finite-route reward includes +0.02/m progress, −0.1/s time, +10 safe completion, up to +5 early completion, −10 failure, −0.001/J sensing energy, and an uncertainty penalty. Collisions incur an additional −10; the stock speed bonus is disabled. The 120-second transfer test retains these coefficients while changing route/deadline normalization and exposure.
-
-See the [algorithm walkthrough](algorithms/README.md) for implementation details. Saved policy files support evaluation; they do not contain complete optimizer/replay state for exact training resumption.
-
-## Tests and GitHub
-
-```bash
-python -m unittest discover -s environments/tests -v
-python -m unittest discover -s experiments/tests -v
-```
-
-A GitHub Actions workflow runs these suites on pushes and pull requests. Local publishing instructions are in [docs/github.md](docs/github.md). The requested remote is [the project GitHub repository](https://github.com/Theoceanisfull/Multi-Objective-Reinforcement-Learning-for-Autonomous-Driving-and-Adaptive-Sensor-Optimization-). No project license has been selected.
+GitHub Actions runs both suites on pushes and pull requests. Rebuild the saved-run index with `python scripts/catalog_runs.py`.

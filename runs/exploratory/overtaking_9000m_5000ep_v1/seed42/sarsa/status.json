@@ -1,0 +1,8 @@
+{
+  "phase": "stopped",
+  "policy": "sarsa",
+  "seed": 42,
+  "episode": 423,
+  "episodes": 5000,
+  "updated_at": "2026-11-18T14:10:48.001987-05:00"
+}

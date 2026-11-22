@@ -1,0 +1,9 @@
+{
+  "phase": "complete",
+  "episode": 2000,
+  "episodes": 2000,
+  "planning_updates": 0,
+  "real_q_updates": 209597,
+  "training_wall_s": 6320.228971332999,
+  "pid": 37855
+}

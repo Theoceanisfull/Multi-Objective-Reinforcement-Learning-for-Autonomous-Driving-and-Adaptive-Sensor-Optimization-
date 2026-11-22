@@ -144,6 +144,22 @@ class ExperimentConfig:
             raise ValueError("Route reward weights must be nonnegative.")
         if self.highway["duration"] <= 0:
             raise ValueError("Episode duration must be positive.")
+        scenario = self.highway.get("slow_lead_scenario")
+        if scenario is not None:
+            if self.highway.get("controlled_vehicles", 1) != 1 or self.highway["vehicles_count"] != 0:
+                raise ValueError("Slow-lead scenarios require one ego and vehicles_count=0.")
+            if not isinstance(scenario, list) or not scenario:
+                raise ValueError("Supply a nonempty slow-lead scenario list.")
+            for row in scenario:
+                if (not isinstance(row.get("lane_offset"), int)
+                        or not 0 <= row["lane_offset"] < self.highway["lanes_count"]
+                        or not math.isfinite(row["gap_m"]) or row["gap_m"] < 15
+                        or not math.isfinite(row["speed_m_s"]) or row["speed_m_s"] <= 0):
+                    raise ValueError("Invalid slow-lead lane, gap (minimum 15 m), or speed.")
+            for i, row in enumerate(scenario):
+                for other in scenario[:i]:
+                    if row["lane_offset"] == other["lane_offset"] and abs(row["gap_m"] - other["gap_m"]) < 15:
+                        raise ValueError("Slow leaders in the same lane must be at least 15 m apart.")
         # JSON serialization also rejects NaN and infinity in nested configuration.
         json.dumps(asdict(self), allow_nan=False)
 

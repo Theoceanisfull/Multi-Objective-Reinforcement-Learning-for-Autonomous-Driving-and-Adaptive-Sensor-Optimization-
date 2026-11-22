@@ -1,0 +1,16 @@
+{
+  "seed": 100000,
+  "return": 1.954333333333333,
+  "steps": 68,
+  "completed": true,
+  "crashed": false,
+  "deadline_failure": false,
+  "elapsed_s": 34.5,
+  "completion_time_s": 34.5,
+  "distance_m": 1014.1095143933333,
+  "overtakes": 1,
+  "lane_changes": 3,
+  "sensor_power_w": 123.0000000000001,
+  "max_abs_q": 1.640602946281433,
+  "energy_j": 4243.500000000004
+}

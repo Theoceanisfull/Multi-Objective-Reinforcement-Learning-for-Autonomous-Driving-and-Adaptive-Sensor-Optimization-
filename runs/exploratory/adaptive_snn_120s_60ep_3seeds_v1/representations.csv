@@ -1,0 +1,10 @@
+policy,training_seed,hidden_weight_l2_change,threshold_offset_mean,pretraining_observations
+Adaptive reservoir,42,0.0,0.0,0.0
+Prototype control (no STDP),42,0.0,0.221303790807724,1101.0
+STDP-pretrained prototypes,42,2.286071300506592,0.4659183025360107,1101.0
+Adaptive reservoir,1042,0.0,0.0,0.0
+Prototype control (no STDP),1042,0.0,0.1887833774089813,987.0
+STDP-pretrained prototypes,1042,2.136012077331543,0.4015249013900757,987.0
+Adaptive reservoir,2042,0.0,0.0,0.0
+Prototype control (no STDP),2042,0.0,0.1962747424840927,1737.0
+STDP-pretrained prototypes,2042,2.6287784576416016,0.413278192281723,1737.0

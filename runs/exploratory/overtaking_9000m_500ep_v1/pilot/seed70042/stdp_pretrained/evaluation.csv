@@ -1,0 +1,3 @@
+policy,policy_id,training_seed,weather,seed,return,crashed,completed,deadline_failure,completion_time_s,elapsed_s,distance_m,steps,energy_j,mean_power_w,overtakes,lane_changes,following_s,traffic_spawned,mode_fraction_all_on,drive_fraction_FASTER
+STDP-pretrained prototypes,stdp_pretrained,70042,clear,80000,-197.56150582239533,True,False,False,,9.0,266.4374234574748,18,1107.0000000000116,123.0000000000013,0,0,0.0,5,1.0,1.0
+STDP-pretrained prototypes,stdp_pretrained,70042,clear,80001,-197.87124705541953,True,False,False,,8.0,234.69990003637326,16,984.0000000000098,123.00000000000122,0,0,0.0,5,1.0,1.0

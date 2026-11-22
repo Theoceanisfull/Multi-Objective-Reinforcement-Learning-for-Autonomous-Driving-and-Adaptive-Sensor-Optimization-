@@ -1,0 +1,3 @@
+policy,policy_id,training_seed,weather,seed,return,crashed,completed,deadline_failure,completion_time_s,elapsed_s,distance_m,steps,energy_j,mean_power_w,overtakes,lane_changes,following_s,traffic_spawned,mode_fraction_all_on,drive_fraction_LANE_LEFT
+Adaptive reservoir,adaptive_reservoir,70042,clear,80000,-190.99076914721925,True,False,False,,50.5,1261.8369122275756,101,6211.499999999305,122.99999999998624,1,1,0.0,6,1.0,1.0
+Adaptive reservoir,adaptive_reservoir,70042,clear,80001,-194.822243404771,True,False,False,,29.0,724.6725528476225,58,3567.0000000000477,123.00000000000165,1,1,0.0,6,1.0,1.0

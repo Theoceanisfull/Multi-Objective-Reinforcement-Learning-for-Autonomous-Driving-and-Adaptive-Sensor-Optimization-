@@ -1,0 +1,9 @@
+{
+  "phase": "complete",
+  "policy": "adaptive_reservoir",
+  "seed": 70042,
+  "episode": 3,
+  "episodes": 3,
+  "test_trips": 2,
+  "updated_at": "2026-11-18T12:51:12.731918-05:00"
+}

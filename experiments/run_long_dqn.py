@@ -46,6 +46,8 @@ def train_policy(name, output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--policies", nargs="+", choices=("dqn", "dyna_dqn", "sarsa"),
+                        default=["dqn", "dyna_dqn", "sarsa"])
     args = parser.parse_args()
     output = args.output.resolve()
     # Validate inputs before starting any expensive training.
@@ -53,7 +55,7 @@ def main():
     DQNSettings(**run["dqn_settings"]).validate()
     ExperimentConfig.load(output / "config.json").validate()
     context = mp.get_context("spawn")
-    names = ("dqn", "dyna_dqn", "sarsa")
+    names = tuple(dict.fromkeys(args.policies))
     completed = [name for name in names if (output / f"{name}_training_complete.json").exists()]
     if completed:
         raise FileExistsError(f"Already completed: {completed}; use saved results or a new run folder")
@@ -67,7 +69,7 @@ def main():
     failures = [p.name for p in processes if p.exitcode != 0]
     if failures:
         raise RuntimeError(f"Training failed for: {', '.join(failures)}")
-    print("All three policies trained and saved. Ready for notebook evaluation.", flush=True)
+    print("All requested policies trained and saved. Ready for notebook evaluation.", flush=True)
 
 
 if __name__ == "__main__":

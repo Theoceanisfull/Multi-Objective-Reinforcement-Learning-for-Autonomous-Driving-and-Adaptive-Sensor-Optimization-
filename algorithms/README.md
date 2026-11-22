@@ -99,3 +99,13 @@ memory. Compare crashes, route completion, power, and interaction counts across
 multiple training seeds before drawing conclusions.
 
 DQN reference: [official PyTorch tutorial](https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html).
+
+## Other policy families
+
+| Module | Purpose |
+| --- | --- |
+| [`snn.py`](snn.py) | Spiking Expected SARSA with fixed, adaptive, or trained hidden representations |
+| [`driving_agents.py`](driving_agents.py) | Linear and neural policies for the driving-only experiments |
+| [`curriculum_driving.py`](curriculum_driving.py) | Warm-start driving agents and gated Dyna updates |
+
+The [experiment guide](../experiments/README.md#exploratory-studies) links the notebooks and recorded protocols for these models. Use `requirements-dqn.txt` for all neural variants, including the spiking agents.

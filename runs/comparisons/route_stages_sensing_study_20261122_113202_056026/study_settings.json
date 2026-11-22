@@ -1,0 +1,60 @@
+{
+  "training_seed": 42,
+  "dqn_settings": {
+    "episodes": 1000,
+    "learning_rate": 0.001,
+    "gamma": 0.99,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.1,
+    "hidden_size": 64,
+    "batch_size": 32,
+    "replay_capacity": 10000,
+    "learning_starts": 64,
+    "target_update_steps": 100,
+    "planning_steps": 2,
+    "model_learning_starts": 200
+  },
+  "seed_panels": {
+    "matched": [
+      100000,
+      100001,
+      100002,
+      100003
+    ],
+    "additional": [
+      200000,
+      200001,
+      200002,
+      200003
+    ]
+  },
+  "weather": [
+    "clear",
+    "rain",
+    "fog"
+  ],
+  "existing_checkpoints": {
+    "short": {
+      "sarsa": "runs/comparisons/dqn_long_training_20261112_170403_004536/sarsa.npz",
+      "dqn": "runs/comparisons/dqn_long_training_20261112_170403_004536/dqn.pt",
+      "dyna_dqn": "runs/comparisons/dqn_long_training_20261112_170403_004536/dyna_dqn.pt"
+    },
+    "long": {
+      "sarsa": "runs/training/time_completion_120s_1000ep_20261121_204241_241658/adaptive_agent.npz",
+      "dqn": "runs/training/dqn_120s_2250m_1000ep_20261122_094440_534028/dqn.pt",
+      "dyna_dqn": "runs/training/dqn_120s_2250m_1000ep_20261122_094440_534028/dyna_dqn.pt"
+    },
+    "overtaking": {
+      "sarsa": "runs/training/overtaking_120s_2250m_1000ep_20261122_100614_534843/adaptive_agent.npz"
+    }
+  },
+  "reward_ablation": {
+    "changed_field": "energy_weight",
+    "training_value": 0,
+    "evaluation_value": 0.001
+  },
+  "forced_sensing": [
+    "front",
+    "all_on"
+  ]
+}

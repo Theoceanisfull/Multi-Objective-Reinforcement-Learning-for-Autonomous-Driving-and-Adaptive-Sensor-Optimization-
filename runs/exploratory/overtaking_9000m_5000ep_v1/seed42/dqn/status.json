@@ -1,0 +1,8 @@
+{
+  "phase": "stopped",
+  "policy": "dqn",
+  "seed": 42,
+  "episode": 989,
+  "episodes": 5000,
+  "updated_at": "2026-11-18T14:10:45.421519-05:00"
+}

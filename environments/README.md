@@ -10,7 +10,7 @@ From the **project root**, using the prepared environment:
 
 ```bash
 .venv/bin/python -m environments.demo --weather clear --sensing all_on
-.venv/bin/python -m environments.demo --weather fog --sensing front --output runs/environment/fog_front
+.venv/bin/python -m environments.demo --weather fog --sensing front --output runs/local/fog_front
 .venv/bin/python -m unittest discover -s environments/tests -v
 ```
 
@@ -19,8 +19,8 @@ policy. It saves `preview.png`, the final observation, a trajectory CSV, and the
 resolved experiment configuration. Existing files in the output folder are
 replaced. Use separate output folders to preserve runs. `--sensing` supports
 `all_on`, `radar_rgb`, `front`, and `off`. Fixed driving across sensing modes is
-useful for inspecting perception and energy; it cannot demonstrate safer driving
-from sensing. A learning controller comes later.
+useful for inspecting perception and energy. For learned driving and sensing
+policies, see the [experiment guide](../experiments/README.md).
 
 Dependencies are the same as `basic/requirements.txt`. The adapter was checked
 against HighwayEnv **1.12.1** and Gymnasium **1.4.0**. No new packages are required.

@@ -135,7 +135,7 @@ def export_replays(run_dir=DEFAULT_RUN, seed=100000, weather="clear", output=Non
         task = (f"_{config.highway['duration']:g}s_{config.reward.route_distance_m:g}m"
                 if (duration_s is not None or route_distance_m is not None)
                 and config.reward.route_distance_m is not None else "")
-        output = run_dir / f"replays{task}_{weather}_seed{seed}_{stamp}"
+        output = Path("runs/local") / f"replays{task}_{weather}_seed{seed}_{stamp}"
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     config.save(output / "config.json")

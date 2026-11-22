@@ -1,0 +1,4 @@
+policy,trips,completion,crash,deadline_failure,successful_time_s,mean_distance_m,mean_overtakes,max_abs_q
+Expected SARSA (linear),20,1.0,0.0,0.0,34.35,1008.8439501591884,1.0,0.4485495541269884
+DQN (Double target),20,1.0,0.0,0.0,34.75,1007.8434466073065,1.0,2.362804412841797
+Dyna-DQN (gated planning),20,1.0,0.0,0.0,34.75,1007.8434466073065,1.0,2.362804412841797

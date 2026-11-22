@@ -1,0 +1,8 @@
+{
+  "phase": "stopped",
+  "policy": "adaptive_reservoir",
+  "seed": 10042,
+  "episode": 46,
+  "episodes": 500,
+  "updated_at": "2026-11-18T16:36:27.573700-05:00"
+}

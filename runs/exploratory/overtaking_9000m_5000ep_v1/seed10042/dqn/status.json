@@ -1,0 +1,6 @@
+{
+  "phase": "stopped",
+  "policy": "dqn",
+  "seed": 10042,
+  "updated_at": "2026-11-18T14:10:45.433721-05:00"
+}

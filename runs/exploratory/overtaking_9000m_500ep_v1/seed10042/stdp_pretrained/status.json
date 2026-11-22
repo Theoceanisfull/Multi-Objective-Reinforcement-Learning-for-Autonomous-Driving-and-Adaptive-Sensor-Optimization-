@@ -1,0 +1,6 @@
+{
+  "phase": "stopped",
+  "policy": "stdp_pretrained",
+  "seed": 10042,
+  "updated_at": "2026-11-18T16:36:26.745785-05:00"
+}

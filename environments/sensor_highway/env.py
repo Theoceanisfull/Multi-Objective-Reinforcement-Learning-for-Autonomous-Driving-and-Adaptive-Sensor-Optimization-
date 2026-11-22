@@ -103,6 +103,8 @@ class SensorHighwayEnv(gym.Env):
         info = self._info(driving_reward, energy, uncertainty)
         info["reward_components"] = components
         info["crashed"] = bool(backend_info["crashed"])
+        if self.config.highway.get("slow_lead_scenario") is not None:
+            info.update(self.backend.slow_lead_diagnostics())
         return observation, reward, bool(terminated), bool(truncated), info
 
     def _observation(self):

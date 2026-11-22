@@ -1,0 +1,10 @@
+episode,scenario,weather,trips,completions,crashes,deadline_failures,mean_finish_s,mean_overtakes,max_overtakes,mean_lane_changes,max_abs_q
+2000,varied_lead,clear,10,10,0,0,68.4,1.0,1,3.2,4.416835308074951
+2000,blocked_left,clear,10,10,0,0,69.8,1.4,2,2.8,3.919733762741089
+2000,blocked_right,clear,10,10,0,0,69.25,1.0,1,3.0,2.863386631011963
+2000,repeated_sparse,clear,10,9,1,0,74.83333333333333,3.3,5,7.8,3.816669464111328
+2000,repeated_medium,clear,10,8,2,0,73.875,4.2,6,9.1,5.214961051940918
+2000,repeated_dense,clear,10,8,2,0,75.25,4.2,6,9.6,3.1384644508361816
+2000,repeated_mixed_speed,clear,10,9,1,0,74.83333333333333,4.4,6,8.0,3.761018753051758
+2000,repeated_medium,rain,10,9,1,0,72.16666666666667,4.7,6,6.0,5.687036037445068
+2000,repeated_medium,fog,10,8,2,0,72.3125,4.4,6,4.4,3.5195930004119873

@@ -13,7 +13,7 @@ def main():
     parser.add_argument("--sensing", choices=["all_on", "radar_rgb", "front", "off"], default="all_on")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--steps", type=int, default=12)
-    parser.add_argument("--output", type=Path, default=Path("runs/environment/demo"))
+    parser.add_argument("--output", type=Path, default=Path("runs/local/environment_demo"))
     args = parser.parse_args()
     if args.steps <= 0:
         parser.error("--steps must be positive")

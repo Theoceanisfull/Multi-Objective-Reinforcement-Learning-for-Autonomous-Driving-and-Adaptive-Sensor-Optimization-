@@ -1,0 +1,6 @@
+{
+  "phase": "stopped",
+  "policy": "adaptive_reservoir",
+  "seed": 20042,
+  "updated_at": "2026-11-18T14:10:45.441626-05:00"
+}

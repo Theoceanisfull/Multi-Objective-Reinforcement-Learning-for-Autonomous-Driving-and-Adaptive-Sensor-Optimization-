@@ -1,0 +1,9 @@
+{
+  "phase": "complete",
+  "policy": "stdp_pretrained",
+  "seed": 42,
+  "episode": 500,
+  "episodes": 500,
+  "test_trips": 60,
+  "updated_at": "2026-11-18T15:53:33.549657-05:00"
+}

@@ -1,0 +1,8 @@
+{
+  "training_wall_s": 87.36195483402116,
+  "environment_steps": 1976,
+  "episodes": 60,
+  "parameters": 15700,
+  "trainable_by_gradient": 1300,
+  "evaluation_wall_s": 14.130148625001311
+}

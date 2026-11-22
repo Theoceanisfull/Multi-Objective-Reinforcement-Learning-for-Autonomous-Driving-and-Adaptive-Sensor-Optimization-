@@ -21,5 +21,8 @@ htmlcov/
 .env.*
 !.env.example
 
-# Optional scratch work; recorded runs under runs/ are intentionally included.
+# Local experiment outputs; recorded runs elsewhere under runs/ are included.
+/runs/local/
+*.log
+*.pkl
 scratch/

@@ -1,0 +1,3 @@
+policy,policy_id,training_seed,weather,seed,return,crashed,completed,deadline_failure,completion_time_s,elapsed_s,distance_m,steps,energy_j,mean_power_w,overtakes,lane_changes,following_s,traffic_spawned,mode_fraction_all_on,drive_fraction_IDLE
+Prototype control (no STDP),prototype_control,70042,clear,80000,-196.9782385540252,True,False,False,,17.0,423.9118344656225,34,2091.000000000026,123.00000000000152,0,0,0.0,4,1.0,1.0
+Prototype control (no STDP),prototype_control,70042,clear,80001,-197.51484396847422,True,False,False,,14.0,348.7150886356063,28,1722.0000000000207,123.00000000000148,0,0,0.0,5,1.0,1.0

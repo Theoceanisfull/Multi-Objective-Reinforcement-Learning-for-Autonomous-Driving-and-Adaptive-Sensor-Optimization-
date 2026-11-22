@@ -1,0 +1,10 @@
+controller,seed,completed,crashed,elapsed_s,distance_m,overtakes
+oracle,900001,True,False,34.0,1011.7496089190804,1
+follow,900001,False,False,45.0,919.3081081684157,0
+slow,900001,False,False,45.0,688.4999999999428,0
+oracle,900002,True,False,34.0,1011.7496089190804,1
+follow,900002,False,False,45.0,881.4494155732285,0
+slow,900002,False,False,45.0,688.4999999999428,0
+oracle,900003,True,False,34.0,1011.7496089190804,1
+follow,900003,False,False,45.0,871.4481455906727,0
+slow,900003,False,False,45.0,688.4999999999428,0

@@ -1,0 +1,9 @@
+{
+  "phase": "complete",
+  "policy": "adaptive_reservoir",
+  "seed": 42,
+  "episode": 500,
+  "episodes": 500,
+  "test_trips": 60,
+  "updated_at": "2026-11-18T15:09:58.698292-05:00"
+}

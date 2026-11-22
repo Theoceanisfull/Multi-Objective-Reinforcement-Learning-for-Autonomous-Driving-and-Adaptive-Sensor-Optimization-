@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-11-18T14:12:38.002115-05:00",
+  "reused_checks_from": "/Users/zac/Desktop/Reinforcment_Learning/final_project/experiments/artifacts/overtaking_9000m_5000ep_v1",
+  "episodes_per_agent_per_seed": 500,
+  "training_seeds": [
+    42,
+    10042,
+    20042
+  ],
+  "models": 18,
+  "total_training_episodes": 9000,
+  "fresh_training": true,
+  "reason": "Decay epsilon from 1.0 to 0.1 over 500 episodes. Existing 5,000-episode-schedule checkpoints are preserved separately.",
+  "evaluation": "Unchanged: 20 traffic seeds \u00d7 3 weather conditions per model."
+}

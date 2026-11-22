@@ -1,0 +1,9 @@
+{
+  "checkpoints_unchanged": true,
+  "matched_starting_traffic": true,
+  "unique_trials": true,
+  "exclusive_outcomes": true,
+  "dqn_dyna_identical_outcomes": true,
+  "completed_trips": 800,
+  "scheduled_trips": 800
+}
